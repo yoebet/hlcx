@@ -1,0 +1,66 @@
+#!/bin/sh
+
+
+stepin(){
+
+  cd $sel
+  while true 
+  do
+    echo
+    ls
+    echo 输入文件名，q返回（进入阅读模式后按空格翻页，q退出）
+    read sel
+    if [ -z $sel ]
+    then
+      continue
+    elif [ $sel = 'q' -o $sel = 'Q' ]
+    then
+      cd ..
+      break
+    fi
+    pfile
+  done
+}
+
+
+pfile(){
+  fn=${sel}.txt
+  if [ -f $sel ]
+  then
+    echo $sel
+    cat $sel | more
+  elif [ -d $sel ]
+  then
+    stepin
+  elif [ -f $fn ]
+  then
+    echo $fn
+    cat $fn | more
+  else
+    echo 输入错误
+  fi
+}
+
+
+trap '' 1 2 3 15
+
+sel=
+
+clear
+while true 
+do
+  echo
+  cd /usr/hlcx/nv/
+  cat menu.txt
+  echo 输入序号，q返回（进入阅读模式后按空格翻页，q退出）
+  read sel
+  if [ -z $sel ]
+  then
+    continue
+  elif [ $sel = 'q' -o $sel = 'Q' ]
+  then
+    break
+  fi
+  pfile
+done
+

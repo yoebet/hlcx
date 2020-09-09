@@ -1,0 +1,5 @@
+cd /usr/hlcx/src2
+./main
+cd /usr/hlcx
+./facade
+

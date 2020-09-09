@@ -1,0 +1,4 @@
+cp /etc/network/interfaces /etc/network/interfaces.o
+cat /etc/network/interfaces.o|sed "s/`/usr/hlcx/bmip`/`/usr/hlcx/mmip`/" > /etc/network/interfaces
+/etc/init.d/networking restart
+

@@ -1,0 +1,15 @@
+
+INCLUDE = -I/usr/local/include/mysql
+LIB = -L/usr/lib -L/usr/local/lib/mysql
+
+CC = gcc
+CFLAGS = -Wall -g $(INCLUDE) 
+LDFLAGS = -lcurses -lmysqlclient
+
+OBJS = init_hlcx.o tools.o
+	
+init_hlcx: $(OBJS)
+	$(CC) $(LIB) $(LDFLAGS) -o $@ $(OBJS)
+	
+%.o: %.c
+

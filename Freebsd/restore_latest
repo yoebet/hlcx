@@ -1,0 +1,15 @@
+cd /hlcx/adm2
+rm ./backup/hlcxdb-tmp*
+BKF=`ls backup|grep gz|sort -r|head -n 1|sed 's/hlcxdb-//'|sed 's/\.gz//'`
+echo
+echo 最新备份：hlcxdb-$BKF.gz
+echo "你确定要恢复吗?按y确认，其他取消："
+read sel
+case "$sel" in
+  y|Y) cp ./backup/hlcxdb-$BKF.gz ./backup/hlcxdb-tmp.gz;
+       gzip -d ./backup/hlcxdb-tmp.gz;
+       mysql -uhlcx -p3981 hlcxdb < ./backup/hlcxdb-$BKF;
+       echo;echo;echo 数据恢复完成.;;
+  *) ;;
+esac
+

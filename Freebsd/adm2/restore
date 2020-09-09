@@ -1,0 +1,3 @@
+gzip -d ./backup/hlcxdb-$1.gz
+mysql -uhlcx -p$2 hlcxdb < ./backup/hlcxdb-$1
+

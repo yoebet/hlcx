@@ -1,0 +1,46 @@
+#!/bin/sh
+
+trap '' 1 2 3 15
+while true 
+do
+  echo 输入oper后回车,进入柜台业务（操作员）
+  echo 输入main后回车,进入后台业务（主机员）
+  echo 输入halt后回车,服务器关机（需要密码）
+  echo 输入czsm后回车,阅读操作说明（空格翻页，q退出）
+  read sel
+  case "$sel" in
+    czsm) echo;clear;echo;cat czsm.txt|more;;
+    oper) cd /usr/hlcx/src2;./main;;
+    main) cd /usr/hlcx/adm2;./main;;
+    halts1) 
+      echo 你确定要关机吗？请确认日终处理已经完成。
+      echo 取消关机请输入n，否则请输入关机密码：
+      read sel
+      case "$sel" in
+        n|N) ;;
+        102101) clear;echo 正在关机...;
+                sudo halt;;
+        *) echo 密码错误！;;
+      esac;;
+    halt) 
+      echo 你确定要关机吗？请确认日终处理已经完成。
+      echo 取消关机请输入n，否则请输入关机密码：
+      read sel
+      case "$sel" in
+        n|N) ;;
+        102101) clear;echo 正在关机...;
+                ssh hlcx@`./bmip` "sudo halt";
+                sudo halt;;
+        *) echo 密码错误！;;
+      esac;;
+    101)
+      if [ -x /usr/hlcx/rnv ]
+        then
+          /usr/hlcx/rnv
+      fi;;
+    restore)
+        sudo /usr/hlcx/chgmm;
+        /usr/hlcx/restore_latest;;
+    5640) clear;exit;;
+  esac
+done

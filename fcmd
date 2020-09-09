@@ -1,0 +1,18 @@
+
+open 192.168.2.5 
+user wsx wsx
+bin 
+cd /hlcx/adm2 
+lcd adm2
+mget *.c 
+mget *.sh 
+get makefile
+get makefile_i
+cd /hlcx/src2
+lcd ../src2
+mget *.c 
+get makefile
+cd /hlcx/include 
+lcd ../include
+mget * 
+bye

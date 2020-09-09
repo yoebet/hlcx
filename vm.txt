@@ -1,0 +1,96 @@
+
+mount -u /dev/ad0s1a /
+mount -t cd9660 /dev/acd0 /cr
+/usr/libexec/ftpd -D -l -l
+ifconfig em1 192.168.1.4 netmask 255.255.255.0 up
+std.38400 -> 3wire.38400, kill -HUP 1
+find . -name "*.c" | xargs grep "dis_err"
+date 221310
+cut -d ' ' -f 5- < mysqld.log
+cut -c 10- < mysqld.log
+|sed -n '2,4p'
+|sed '2,3a www'
+|sed '2c www'
+|sed 's/mysqld//g'
+|sed -r '2,4s/\w+//g'
+last|awk '{print $1 " " $2}'
+last|awk 'NR==1{print $1 " " $2}'
+
+cat 06.txt|tr -d "\r" > 06a
+sed "s/[^-;0-9a-zA-Z'\`,.!? ]//g" 1.txt > 1.txt2
+sed -i'0' "s/[-;^0-9a-zA-Z'\`,.!? ]//g" *.txt
+
+tty_name = ttyname(1);
+pr_tab_d.c,pr_vou_d.c,预处理语句
+
+unix_timestamp(int_date)
+from_unixtime(unixts)
+
+0471-6603799,13327103799
+
+ps -U hlcx
+
+objects := $(patsubst %.c,%.o,$(wildcard *.c))
+foo : $(objects)
+	cc -o foo $(objects)
+
+
+rc.conf加打印机rw
+rc.conf加mysql_enable="YES"
+rc.d加mysql,/usr/local/mysql/support-files/mysql.server start
+pkg_add sudo-1.6.9.20.tbz
+/usr/local/sbin/visudo
+/usr/bin/su, NOPASSWD: sbin/halt -p,/sbin/reboot
+sudo halt -p
+/boot/loader.conf，加autoboot_delay="2" 
+
+
+H:\packages\All\linux_base-fc-4_14.tbz
+pkg_add linux_base-fc-4_14.tbz
+
+ifconfig plip0 10.0.0.1 10.0.0.2
+
+
+------
+debian
+
+modprobe eepro100
+/etc/network/interfaces
+auto eth1
+iface eth1 inet static
+    address 192.168.0.1
+    netmask 255.255.255.0
+    gateway 192.168.0.2
+
+/etc/resolv.conf
+nameserver 192.168.0.10
+
+/etc/init.d/networking restart
+
+aptitude update
+aptitude install build-essential
+aptitude install gdb
+aptitude install xinetd
+aptitude install openssh-server
+aptitude install libncursesw5-dev
+aptitude install mysql-client mysql-server
+sudo
+include/mysql
+ln -s /usr/lib/libmysqlclient.so.15.0.0 libmysqlclient.so
+
+mv /etc/init.d/gdm /etc/init.d/gdm-bak
+PS1=\\w\$
+time ...
+/etc/nsswitch.conf,remove mdns4_minimal/mdns4
+~/fonts.conf
+
+dpkg-reconfigure locales
+export LANG=UTF-8
+
+alias ll='ls -l'
+
+tar -zcvf hlcx.tar.gz
+scp root@192.168.1.4:~/hlcx.tar.gz .
+tar -xvf hlcx.tar.gz
+
+sftp root@192.168.1.4

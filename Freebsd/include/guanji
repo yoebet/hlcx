@@ -1,0 +1,25 @@
+
+trap '' 1 2 3 9 15 
+who | wc >/tmp/guanji
+grep " 1 " /tmp/guanji >/tmp/guan
+if [ -s /tmp/guan ] 
+then
+	echo  "\n\n\n请稍候,等出现关机提示后再关机 !"
+	read a
+        sync 
+        sleep 5
+        sync
+        sleep 3
+	haltsys;
+else
+	echo "\n\n\n 有其它终端尚未退出 !"
+	echo "\n 是否确认关机(Y/n)？\c"
+	read a
+	if (test $a = "Y" )
+		then
+		haltsys;
+	else
+		echo;
+	fi
+fi
+exit
